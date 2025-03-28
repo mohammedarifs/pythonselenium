@@ -6,24 +6,38 @@ on:
 
 jobs:
   job1:
-    run-tests:
-      name: Test
-      runs-on: windows-latest
+    name: Build
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
   job2:
-    - steps:
-        - name: Set up Python
-          uses: actions/checkout@v4
-          with:
-            python-version: 3.13
+    name: Setup python
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+        uses: actions/checkout@v4
+        with:
+          python-version: 3.13
+
   job3:
-    - steps:
-        - name: Install dependencies
-          run: python -m pip install -r requirements.txt
+    name: Install deps
+    needs: job2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
   job4:
-    - steps:
-        - name: Run tests
-          run: pytest
+    name: Run Demo
+    needs: job3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run tests
+        run: pytest
