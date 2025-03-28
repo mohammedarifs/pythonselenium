@@ -7,7 +7,7 @@ on:
 jobs:
   jobs1:
     run-tests:
-      name: Test
+      name: First run
       runs-on: windows-latest
 
       steps:
@@ -27,7 +27,7 @@ jobs:
 
   jobs2:
     run-tests:
-      name: Test
+      name: Second run
       runs-on: windows-latest
 
       steps:
