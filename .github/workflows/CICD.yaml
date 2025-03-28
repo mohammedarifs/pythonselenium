@@ -1,46 +1,25 @@
-name: multi jobs
+name: CI/CD
 
 on:
   push:
   pull_request:
 
 jobs:
-  jobs1:
-    run-tests:
-      name: First run
-      runs-on: windows-latest
+  run-tests:
+    name: Test
+    runs-on: windows-latest
 
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Set up Python
-          uses: actions/checkout@v4
-          with:
-            python-version: 3.13
+      - name: Set up Python
+        uses: actions/checkout@v4
+        with:
+          python-version: 3.13
 
-        - name: Install dependencies
-          run: python -m pip install -r requirements.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
 
-        - name: Run tests
-          run: pytest -v -k demosearchtxt
-
-  jobs2:
-    run-tests:
-      name: Second run
-      runs-on: windows-latest
-
-      steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
-
-        - name: Set up Python
-          uses: actions/checkout@v4
-          with:
-            python-version: 3.13
-
-        - name: Install dependencies
-          run: python -m pip install -r requirements.txt
-
-        - name: Run tests
-          run: pytest -v -k checklogin
+      - name: Run tests
+        run: pytest
