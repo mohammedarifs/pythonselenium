@@ -31,9 +31,10 @@ jobs:
 
     steps:
       - name: Install dependencies
-        run:
-          pip install pytest
-          pip install selenium
+        run: |
+          python -m pip install -r requirements.txt
+          working-directory: \..
+
 
   job4:
     name: Run Demo
