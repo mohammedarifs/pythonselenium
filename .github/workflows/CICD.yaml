@@ -33,6 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd ${{ github.workspace }}/pythonselenium
+          cd D:\a\pythonselenium
           python -m pip install -r requirements.txt
 
   job4:
