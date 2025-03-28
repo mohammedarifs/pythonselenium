@@ -7,7 +7,7 @@ on:
 jobs:
   job1:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -16,7 +16,7 @@ jobs:
   job2:
     name: Setup python
     needs: job1
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Set up Python
@@ -27,7 +27,7 @@ jobs:
   job3:
     name: Install deps
     needs: job2
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Install dependencies
@@ -36,7 +36,7 @@ jobs:
   job4:
     name: Run Demo
     needs: job3
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Run tests
